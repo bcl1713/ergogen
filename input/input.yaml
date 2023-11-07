@@ -1,0 +1,117 @@
+units:
+  kx: cx
+  ky: cy
+  px: kx + 4
+  py: ky + 4
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [100,-100]
+      key:
+        padding: ky
+        spread: kx
+        autobind: 0
+      columns:
+        pinky:
+        ring:
+          key:
+            stagger: 0.8ky
+          rows:
+            bottom:
+              bind: [0,0,0.8ky,0]
+        middle:
+          key:
+            stagger: 0.4ky
+          rows:
+            bottom:
+              bind: [0,0,1.2ky,0]
+        pointer:
+          key:
+            stagger: -0.4ky
+          rows:
+            bottom:
+              bind: [0,0,0.8ky,0]
+        inner:
+          key:
+            stagger: -0.2ky
+            bind: [0,kx+6,0.8ky,0]
+          rows:
+      rows:
+        bottom:
+        home:
+        top:
+    thumbs:
+      key:
+        padding: ky
+        spread: kx
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [0.kx, -1.5ky]
+      columns:
+        layer:
+          key:
+            splay: -15
+          rows:
+            cluster:
+              bind: [3,0,0,48]
+        space:
+          key:
+            width: 1.5kx
+            splay: 75
+            shift: [2.5,-3.25]
+          rows:
+            cluster:
+              bind: [19,4,0,4]
+      rows:
+        cluster:
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+      bound: true
+  keys:
+    - what: rectangle
+      where: true
+      bound: false
+      size: [kx-0.5, ky-0.5]
+  board:
+    - what: outline
+      name: raw
+      fillet: 1
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  yaskeeb:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: GND
+      promicro:
+        what: promicro_pretty
+        where:
+          ref: matrix_inner_top
+          shift: [kx+4,-ky]
+          rotate: 270
+      reset:
+        what: b3u1000p
+        params:
+          reverse: true
+          r1: RST
+          r2: GND
+        where:
+          ref: matrix_inner_top
+          shift: [kx-4, -40]
+          rotate: 90
