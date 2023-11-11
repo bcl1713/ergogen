@@ -14,29 +14,40 @@ points:
         autobind: 0
       columns:
         pinky:
+          rows:
+            top:
+              column_net: P1
         ring:
           key:
             stagger: 0.8ky
           rows:
             bottom:
               bind: [0,0,0.8ky,0]
+            top:
+              column_net: P0
         middle:
           key:
             stagger: 0.4ky
           rows:
             bottom:
               bind: [0,0,1.2ky,0]
+            top:
+              column_net: P2
         pointer:
           key:
             stagger: -0.4ky
           rows:
             bottom:
               bind: [0,0,0.8ky,0]
+            top:
+              column_net: P3
         inner:
           key:
             stagger: -0.2ky
             bind: [0,kx+6,0.8ky,0]
           rows:
+            top:
+              column_net: P4
       rows:
         bottom:
         home:
