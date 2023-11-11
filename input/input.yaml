@@ -99,6 +99,20 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: GND
+      key_vias:
+        what: via
+        where: true
+        adjust:
+          shift: [0,3]
+        params:
+          net: "{{column_net}}"
+      gnd_vias:
+        what: via
+        where: true
+        adjust:
+          shift: [0,-3]
+        params:
+          net: GND
       promicro:
         what: promicro_pretty
         where:
